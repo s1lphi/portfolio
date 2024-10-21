@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+    <title>s1lphi</title>
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+            <div class="nav-container">
+                <ul class="navmenu">
+                    <li class="resetbtn navanim"><a href="">reset</a></li>
+                    <li class="contactmebtn navanim">
+                        <div id="contactmecontainer" class="contactme-container">
+                            <span id="contactmebtn" style="cursor: pointer; z-index: 9999;">contact me</span>
+                            <div id="contactmeinscontainer" class="contactme-inscontainer">
+                                <p id="contactinstext">e-mail: <a href="https://www.gmail.com" target="_blank">artemmarkelovodesa@gmail.com</a></p>
+                                <p id="contactinstext">linkedIn: <a href="https://www.linkedin.com/in/s1lphi" target="_blank">linkedin.com/in/s1lphi</a></p>
+                                <p id="contactinstext">telegram: <a href="">@s1lphi</a></p>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="logo"><a href="">s1lphi</a></li>
+                    <li class="aboutmebtn navanim">
+                        <div id="aboutmecontainer" class="aboutme-container">
+                            <div id="aboutmeinscontainer" class="aboutme-inscontainer">
+                                <span id="aboutmeinstext">I’m Artem - front-end developer. I’m
+                                    23 y.o. I live in Odesa, Ukraine. 
+                                    Have 2 years of exp. in front-end.
+                                    Have knowledge in HTML, CSS, JS,
+                                    PHP, MySQL etc.</span>
+                            </div>
+                            <span id="abmebtn" style="cursor: pointer; z-index: 9999;">about me</span>
+                        </div>
+                    </li>
+                    <li class="projects navanim"><a href="">projects</a></li>
+                </ul>
+            </div>
+        </header>
+        <main>
+            <div class="screen-container">
+                <div class="browser-container">
+                    <img src="/img/internet.svg" alt="" style="width: 50px; height: 50px;">
+                    <span>portfolio.exe</span>
+                </div>
+                <div class="internet-container" id="container">
+                    <div id="draggable">
+                        <div class="close-container">
+                            <img src="/img/cross.svg" alt="">
+                        </div>
+                    </div>
+                    <div class="tab-container">
+                        <div class="tof-tabcontainer tabcontainer">
+                            <h1>TOFSITE</h1>
+                        </div>
+                        <div class="mov-tabcontainer tabcontainer">
+                            <h1>TREACLEFILMS</h1>
+                        </div>
+                        <div class="pokora-tabcontainer tabcontainer">
+                            <h1>morgueofurexes</h1>
+                        </div>
+                    </div>
+                    <iframe src="/sites/TOFSITE/index.html" frameborder="0" style="width: 100%; height: 100%;" id="websitesdisplay"></iframe>
+                </div>
+                <div class="abme-container">
+                    <img src="/img/abme.svg" alt="" style="width: 50px; height: 50px;">
+                    <span>aboutme.txt</span>
+                </div>
+                <div class="abmewindow-container" id="container">
+                    <div id="draggableabme">
+                        <div class="closeabme-container">
+                            <img src="/img/cross.svg" alt="">
+                        </div>
+                    </div>
+                    <div class="abme-textcontainer">
+                        <img src="/img/image.png" alt="" style="width: 150px; height: 150px;">
+                        <span>
+                            Hi, my name is Artem and I'm 23 years old. I have 1.5 years of experience in front-end development.
+                            <br>
+                            I don't have any diploma or formal education; I learned from YouTube.
+                            <br>
+                            I already have four full projects.
+                            <br>
+                            The first is my own project (I did the design too).
+                            <br>
+                            The second is a freelance project where I made a website for a movie-making company.
+                            <br>
+                            The third is a website for a musician (I did the design too).
+                            <br>
+                            The fourth was for a Minecraft server, but the client started ignoring me, although I finished the project.
+                            <br>
+                            <br>
+                            I have knowledge in HTML, CSS, JavaScript, PHP, MySQL, and how to work with libraries.
+                            <br>
+                            Now I'm learning mobile coding too.
+                            <br>
+                            I can create a little design for you and make a fully functional website.
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="screentablet-container">
+                <div class="browsertablet-container">
+                    <img src="/img/internet.svg" alt="" style="width: 50px; height: 50px;">
+                    <span>portfolio.exe</span>
+                </div>
+                <div class="internet-container" id="container">
+                    <div id="draggable">
+                        <div class="close-container">
+                            <img src="/img/cross.svg" alt="">
+                        </div>
+                    </div>
+                    <div class="tab-container">
+                        <div class="tof-tabcontainer tabcontainer">
+                            <h1>TOFSITE</h1>
+                        </div>
+                        <div class="mov-tabcontainer tabcontainer">
+                            <h1>TREACLEFILMS</h1>
+                        </div>
+                        <div class="pokora-tabcontainer tabcontainer">
+                            <h1>morgueofurexes</h1>
+                        </div>
+                    </div>
+                    <iframe src="/sites/TOFSITE/index.html" frameborder="0" style="width: 100%; height: 100%;" id="websitesdisplay"></iframe>
+                </div>
+                <div class="abmetablet-container">
+                    <img src="/img/abme.svg" alt="" style="width: 50px; height: 50px;">
+                    <span>aboutme.txt</span>
+                </div>
+            </div>
+            <div class="turn-btn"></div>
+            <div class="ledturn"></div>
+        </main>
+    </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="/js/main.js"></script>
+</html>
