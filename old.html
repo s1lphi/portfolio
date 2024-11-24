@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenStreetMap з Leaflet</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <style>
+        #map {
+            height: 90vh;
+            width: 100%;
+        }
+        #controls {
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Контейнер для управління -->
+    <div id="controls">
+        <input type="text" id="address" placeholder="Введіть адресу, наприклад, Черняховського, Одеса" style="width: 300px;" />
+        <button onclick="updateLocation()">Знайти</button>
+    </div>
+
+    <!-- Контейнер для карти -->
+    <div id="map"></div>
+
+    <!-- Підключення Leaflet.js -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script>
+        // Ініціалізація карти з початковою точкою на Києві
+        var map = L.map('map').setView([50.4501, 30.5234], 12);
+
+        // Додаємо плитки OpenStreetMap
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Оголошення змінних для кола та маркера
+        var circle, marker;
+        var zoomLevelWithCircle = 14; // Рівень масштабу, при якому з'являється коло
+
+        // Функція для оновлення місця на карті
+        function updateLocation() {
+            var address = document.getElementById('address').value;
+            
+            if (!address) {
+                alert("Будь ласка, введіть адресу.");
+                return;
+            }
+
+            // Використання Nominatim API для геокодування
+            fetch('https://nominatim.openstreetmap.org/search?format=json&q=' + encodeURIComponent(address))
+                .then(response => response.json())
+                .then(data => {
+                    if (data && data.length > 0) {
+                        // Отримуємо координати першого результату
+                        var lat = data[0].lat;
+                        var lon = data[0].lon;
+
+                        // Встановлюємо центр карти на ці координати
+                        map.setView([lat, lon], zoomLevelWithCircle);
+
+                        // Якщо коло чи маркер вже існують, видаляємо їх
+                        if (circle) {
+                            map.removeLayer(circle);
+                        }
+                        if (marker) {
+                            map.removeLayer(marker);
+                        }
+
+                        // Малюємо нове коло з радіусом 1 км і ніжним блакитним кольором
+                        circle = L.circle([lat, lon], {
+                            color: '#add8e6',       // Світло-блакитний колір обведення
+                            fillColor: '#b3e5fc',   // Ніжний блакитний колір заливки
+                            fillOpacity: 0.4,       // Прозорість заливки
+                            radius: 1000            // Радіус 1 км
+                        }).addTo(map);
+
+                        // Додаємо маркер на місце кола
+                        marker = L.marker([lat, lon]).addTo(map);
+
+                        // Встановлюємо текст для спливаючого вікна
+                        circle.bindPopup("Це центр " + address + " і радіус 1 км.");
+                        marker.bindPopup("Це центр " + address);
+
+                        // Додаємо подію на клік по маркеру для наближення до масштабу
+                        marker.on('click', function() {
+                            map.setView([lat, lon], zoomLevelWithCircle);
+                        });
+
+                        // Викликаємо функцію для управління відображенням кола та маркера
+                        toggleMarkerOnZoom();
+                    } else {
+                        alert("Не вдалося знайти місце за цією адресою.");
+                    }
+                })
+                .catch(error => {
+                    console.error('Помилка при отриманні даних геокодування:', error);
+                });
+        }
+
+        // Функція для відображення або кола, або маркера залежно від масштабу
+        function toggleMarkerOnZoom() {
+            map.on('zoomend', function() {
+                var zoomLevel = map.getZoom();
+                
+                if (zoomLevel < zoomLevelWithCircle) {
+                    // Показуємо маркер і приховуємо коло при низькому масштабі
+                    if (circle) {
+                        map.removeLayer(circle);
+                    }
+                    if (marker && !map.hasLayer(marker)) {
+                        map.addLayer(marker);
+                    }
+                } else {
+                    // Показуємо коло і приховуємо маркер при високому масштабі
+                    if (marker) {
+                        map.removeLayer(marker);
+                    }
+                    if (circle && !map.hasLayer(circle)) {
+                        map.addLayer(circle);
+                    }
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>

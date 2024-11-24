@@ -1,0 +1,145 @@
+* {
+    font-family: 'Roboto', sans-serif;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style-type: none;
+}
+
+.wrapper {
+    display: flex;
+    margin: auto;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    width: 100%;
+    background-color: rgb(53, 53, 53);
+}
+
+.logo-container {
+    display: flex;
+    padding: 5px 50px;
+    padding-bottom: 0;
+    width: 100%;
+    height: 85%;
+}
+
+.nav-container {
+    display: flex;
+    margin-top: 10px;
+    width: 100%;
+    height: fit-content;
+    padding: 0 25px;
+}
+
+.headerinscont {
+    display: flex;
+    color: white;
+    font-weight: 100;
+    width: 50%;
+    height: 100%;
+}
+
+.leftside-container {
+    flex-direction: column;
+    gap: 5px;
+}
+
+.rightside-container {
+    text-align: right;
+    height: 75%;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 5px;
+}
+
+.midline-container {
+    display: flex;
+    color: white;
+    padding: 0 25px;
+    justify-content: flex-end;
+}
+
+.midlineul {
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+}
+
+.nav-list {
+    display: flex;
+    color: white;
+    flex-direction: row;
+    padding-bottom: 10px;
+    height: fit-content;
+    gap: 50px;
+}
+
+.nav-list li {
+    cursor: pointer;
+    user-select: none;
+}
+
+.table-container {
+    display: flex;
+    width: 100%;
+    height: fit-content;
+    padding: 0 150px;
+}
+
+.custom-table {
+    text-align: center;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.custom-table td {
+    border: 1px solid black;
+    padding: 25px;
+    font-size: 20px;
+}
+
+.barcode {
+    width: 250px;
+    height: 100px;
+}
+
+.maincont {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: fit-content;
+}
+
+.oblkartka {
+    display: flex;
+    width: 100%;
+    height: fit-content;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0 25px;
+}
+
+.tableh1 {
+    display: flex;
+    width: 100%;
+    height: fit-content;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.oblikbtn {
+    display: flex;
+    width: 100%;
+    height: fit-content;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0 25px;
+}
